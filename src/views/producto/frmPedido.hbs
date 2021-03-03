@@ -1,0 +1,88 @@
+<main class="py-5 frms">
+    <div class="container py-5">
+        <div class="row py-4">
+            <div class="col-md-8 py-1">
+                <div class="card">
+                    <h2 class="m-b-2 card-header ">Pedido de Productos a Proveedor</h2>
+                    <form action="#" class="py-5 card-body " method="POST">
+
+                        <div class="form-group row">
+                            <label for="productoID" class=" col-lg-2 col-form-label">producto
+                            </label>
+                            <div class="col-lg-4">
+                                <select class="form-control" id="productoID" name="productoID">
+                                    <option value="">--Seleccionar--</option>
+                                    {{#each producto}}
+                                    <option value="{{id}}">{{nombre}} ({{descripcion}})</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <label for="proveedorID" class=" col-lg-2 col-form-label">Proveedor</label>
+                            <div class="col-lg-4">
+                                <select class="form-control" id="proveedorID" name="proveedorID">
+                                    <option value="">--Seleccionar--</option>
+                                    {{#each proveedor}}
+                                    <option value="{{id}}">{{razonSocial}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="cantidadProducto" class=" col-lg-2 col-form-label">Cantidad</label>
+                            <div class="col-lg-4">
+                                <input class=" form-control" type="text" id="cantidadProducto" name="cantidadProducto"
+                                    placeholder="Cantidad a Pedir" data-toggle="tooltip" data-placement="top"
+                                    title="Ingrese la Cantidad a Pedir">
+                            </div>
+                        </div>
+                        <div class="form-group row py-4">
+                            <div class="col-lg-6 offset-lg-2">
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+                                <button type="reset" class="btn btn-secondary">Limpiar</button>
+                                <button type="submit" class="generar btn btn-primary">Generar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-4 py-1">
+                <div class="card">
+                    <div class="card-header">Nota</div>
+                    <div class="card-body">
+                        <h4 class="card-title">Special title treatment</h4>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <table class="card-body table table-responsive table-striped py-4">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>producto</th>
+                        <th>Proveedor</th>
+                        <th>Cantidad Pedida</th>
+                        <th>Fecha Creación</th>
+
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each productoproveedor}}
+                    <tr>
+                        <th scope="row">{{id}}</th>
+                        <td>{{nombreProduct}}</td>
+                        <td>{{desProduct}}</td>
+                        <td>{{cantidadProducto}}</td>
+                        <td>{{fechaCreacion}}</td>
+                        <td>
+                            <i class="updateicon fas fa-edit"></i>
+                            <a href="delete/{{id}}" class="deleteicon fas fa-trash-alt"></a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>

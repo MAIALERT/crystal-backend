@@ -1,0 +1,138 @@
+<main class="py-5 frms">
+    <div class="container py-5">
+        <div class="row py-4">
+            <div class="col-md-8 py-1">
+                <div class="card">
+                    <h2 class="m-b-2 card-header ">Registro Persona</h2>
+                    <form action="#" class="py-5 card-body " method="POST">
+                        <div class="form-group row">
+                            <label for="nombre" class="col-lg-2 col-form-label">Nombre</label>
+                            <div class="col-lg-4">
+                                <input class=" form-control" type="text" id="nombreCliente" name="nombre"
+                                    placeholder="Nombre" data-toggle="tooltip" data-placement="top"
+                                    title="Ingrese su Nombre">
+                            </div>
+                            <label for="apellido" class="col-lg-2 col-form-label">Apellido</label>
+                            <div class="col-lg-4">
+                                <input class=" form-control" type="text" id="apellidoCliente" name="apellido"
+                                    placeholder="Apellido" data-toggle="tooltip" data-placement="top"
+                                    title="Ingrese su Apellido">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="tipoDocumentoID" class=" col-lg-2 col-form-label">Tipo Documento
+                            </label>
+                            <div class="col-lg-4">
+                                <select class="form-control" id="tipoDocumentoID" name="tipoDocumentoID">
+                                    <option value="">---Seleccionar---</option>
+                                    {{#each personaDocumento}}
+                                        <option value="{{id}}">{{nombre}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <label for="numeroDocumento" class=" col-lg-2 col-form-label">N° Documento</label>
+                            <div class="col-lg-4">
+                                <input class=" form-control" type="text" id="numeroDocuCliente" name="numeroDocumento"
+                                    placeholder="Número de documento" data-toggle="tooltip" data-placement="top"
+                                    title="Ingrese el Número de Documento">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="fechaNacimiento" class=" col-lg-2 col-form-label">Fecha Nacimiento</label>
+                            <div class="col-lg-4">
+                                <input class=" form-control" type="date" id="nacimientoCliente" name="fechaNacimiento"
+                                    placeholder="Fecha de Nacimiento" data-toggle="tooltip" data-placement="top"
+                                    title="Ingrese f. nacimiento">
+                            </div>
+                            <label for="generoID" class=" col-lg-2 col-form-label">Genero</label>
+                            <div class="col-lg-4">
+                                <select class="form-control"  id="generoID" name="generoID">
+                                    <option value="">---Seleccionar---</option>
+                                    {{#each Personagenero}}
+                                        <option value="{{id}}">{{nombre}}</option> 
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="telefono" class=" col-lg-2 col-form-label">Teléfono</label>
+                            <div class="col-lg-4">
+                                <input class=" form-control" type="text" id="telefono" name="telefono"
+                                    placeholder="Teléfono Cliente" data-toggle="tooltip" data-placement="top"
+                                    title="Ingrese el Telefono">
+                            </div>
+                            <label for="correo" class=" col-lg-2 col-form-label">E-Mail</label>
+                            <div class="col-lg-4">
+                                <input class=" form-control" type="text" id="correoCliente" name="correoElectronico"
+                                    placeholder="Email de Cliente" data-toggle="tooltip" data-placement="top"
+                                    title="Ingrese el Email">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="direccion" class=" col-lg-2 col-form-label">Dirección</label>
+                            <div class="col-lg-4">
+                                <input class=" form-control" type="text" id="DireccionCliente" name="direccion"
+                                    placeholder="Dirección Cliente" data-toggle="tooltip" data-placement="top"
+                                    title="Ingrese su Dirección">
+                            </div>
+                        </div>
+                        <div class="form-group row py-4">
+                            <div class="col-lg-6 offset-lg-2">
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+                                <button type="reset" class="btn btn-secondary">Limpiar</button>
+                                <button type="submit" class="generar btn btn-primary">Generar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-4 py-1">
+                <div class="card">
+                    <div class="card-header">Nota</div>
+                    <div class="card-body">
+                        <h4 class="card-title">Special title treatment</h4>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <table class="card-body table table-responsive table-striped py-4">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Tipo Documento</th>
+                        <th>N° Documento</th>
+                        <th>Fecha Nacimiento</th>
+                        <th>Genero</th>
+                        <th>Telefono</th>
+                        <th>E-mail</th>
+                        <th>Dirección</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each persona}}
+                    <tr>
+                        <th scope="row">{{ID}}</th>
+                        <td>{{nombre}}</td>
+                        <td>{{apellido}}</td>
+                        <td>{{desTipoDocumento}}</td>
+                        <td>{{numeroDocumento}}</td>
+                        <td>{{fechaNacimiento}}</td>
+                        <td>{{desGenero}}</td>
+                        <td>{{telefono}}</td>
+                        <td>{{correo}}</td>
+                        <td>{{direccion}}</td>
+                        <td>
+                            <i class="updateicon fas fa-edit"></i>
+                            <a href="delete/{{ID}}" class="deleteicon fas fa-trash-alt"></a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>

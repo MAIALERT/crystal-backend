@@ -1,0 +1,134 @@
+<main class="py-5 frms">
+    <div class="container py-5">
+        <div class="row py-4">
+            <div class="col-md-8 py-1">
+                <div class="card">
+                    <h2 class="m-b-2 card-header ">Registro Usuario</h2>
+                    <form action="#" class="py-5 card-body " method="POST">
+                        <div class="form-group row">
+                            <label for="usuario" class="col-lg-2 col-form-label">Usuario</label>
+                            <div class="col-lg-4">
+                                <input class=" form-control" type="text" value="{{UsuarioEditar.usuario}}" id="usuario"
+                                    name="usuario" placeholder="usuario" data-toggle="tooltip" data-placement="top"
+                                    title="Ingrese su usuario">
+                            </div>
+                            <label for="contrasena" class="col-lg-2 col-form-label">Contraseña</label>
+                            <div class="col-lg-4">
+                                <input class=" form-control" type="text" value="{{UsuarioEditar.contrasena}}"
+                                    id="contrasena" name="contrasena" placeholder="Contraseña" data-toggle="tooltip"
+                                    data-placement="top" title="Ingrese su Contraseña">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="rolID" class=" col-lg-2 col-form-label">Rol</label>
+                            <div class="col-lg-4">
+                                <select class="form-control" id="rolID" name="rolID">
+                                    <option value="">---Seleccionar---</option>
+                                    {{#each rol}}
+                                    <option value="{{id}}">{{nombre}}({{descripcion}}) </option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <label for="clienteID" class=" col-lg-2 col-form-label">Persona</label>
+                            <div class="col-lg-4">
+                                <select class="form-control" value="{{UsuarioEditar.clienteID}}" id="clienteID"
+                                    name="personaID">
+                                    <option value="">---Seleccionar---</option>
+                                    {{#each persona}}
+                                    <option value="{{id}}">{{nombre}} {{apellido}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row py-4">
+                            <div class="col-lg-6 offset-lg-2">
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+                                <button type="reset" class="btn btn-secondary">Limpiar</button>
+                                <button type="submit" class="generar btn btn-primary">Generar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-4 py-1">
+                <div class="card">
+                    <div class="card-header">Nota</div>
+                    <div class="card-body">
+                        <h4 class="card-title">Special title treatment</h4>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <table class="card-body table table-responsive table-striped py-4">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Usuario</th>
+                        <th>Nombre de Persona</th>
+                        <th>Rol</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each usuario}}
+                    <tr>
+                        <th scope="row">{{ID}}</th>
+                        <td>{{usuario}}</td>
+                        <td>{{nombrePersona}} {{apellidoPersona}}</td>
+                        <td>{{nombreRol}}({{desRol}})</td>
+                        <td>
+                            {{!-- <a href="update/{{ID}}" class="updateicon fas fa-edit"></a> --}}
+                            <!--Botón modal-->
+                            <a href="" class="updateicon fas fa-edit" data-toggle="modal"
+                                data-target="#modificarUsuario{{ID}}"></a>
+
+                            <!-- Modal de Actualización-->
+                            <div class="modal" id="modificarUsuario{{ID}}" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenteredLabel" aria-hidden="true">
+
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <form action="update/{{ID}}" class="py-5 card-body " method="post">
+
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalCenteredLabel">Modificar
+                                                    Usuario
+                                                </h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group row d-flex justify-content-center">
+                                                        <label for="usuario" class="col-form-label">Usuario</label>
+                                                        <div class="col-lg-4">
+                                                            <input class=" form-control" type="text"
+                                                                value="{{usuario}}" id="usuario"
+                                                                name="usuario" placeholder="usuario"
+                                                                data-toggle="tooltip" data-placement="top"
+                                                                title="Ingrese su usuario">
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Cerrar</button>
+                                                <button type="submit" class="btn btn-primary">Guardar
+                                                    Cambios</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <a href="delete/{{ID}}" class="deleteicon fas fa-trash-alt"></a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</main>
