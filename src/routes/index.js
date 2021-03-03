@@ -1,6 +1,10 @@
 const routes = (app) => {
-    app.use('/roles', require('./../modules/seguridad/routes'));
-    // Todas las rutas de los modulos
+    app.use('/', require('./../modules/seguridad/routes'));
+    app.use('/', require('./../modules/parametros/routes'));
+    app.use('/', require('./../modules/pedidos/routes'));
+    app.use('/', require('./../modules/proveedores/routes'));
+
+    
 };
 
 module.exports = routes;

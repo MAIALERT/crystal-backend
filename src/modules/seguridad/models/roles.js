@@ -11,7 +11,6 @@ class Roles {
 
   insertar = async (datos) => {
     const resultado = await this.db.query('insert into rol set ?', [datos]);
-    console.log('insertar', resultado);
     return resultado.insertId;
   }
 
