@@ -1,9 +1,6 @@
-const express = require('express');
-const router = express.Router();
+const routes = (app) => {
+    app.use('/roles', require('./../modules/seguridad/routes'));
+    // Todas las rutas de los modulos
+};
 
-//creación de nuestra primera ruta
-router.get('/',(req,res)=>{
-    res.send('holitassss');
-});
-//exportar
-module.exports=router;
+module.exports = routes;
